@@ -2,11 +2,10 @@ FROM python:3.11-slim-bullseye
 
 WORKDIR /app
 
-COPY ../project.toml ../poetry.lock ./
+COPY ../requirements.txt ./
 
-RUN pip install poetry
-RUN poetry install --no-root
+RUN pip install -r requirements.txt
 
-COPY . .
+COPY ../job_tracker/ .
 
 CMD ["python", "main.py"]
