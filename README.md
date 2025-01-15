@@ -23,4 +23,21 @@ poetry self add poetry-plugin-export
 
 Overall if you ever think of adding a venv, poetry, or some other virtual enviroment in your docker container just don't it is pointless in most cases.
 
+---
+
+Wow sometimes I just like complexity too much I am running this on a M series mac,
+so only need Docker for my Database. Otherwise I can't use my local instance
+of Ollama running and utilize the GPU. Gosh lol sometimes I make my life so hard.
+
+I will say if you did this in Windows or Linux then life would be simple, but
+this is more powerful than my Linux desktop, so :(.
+
+Rant over, so basically yeah just use poetry and run.
+
+```sh
+poetry run python job_tracker/main.py
+```
+
+
 </details>
+
