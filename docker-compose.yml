@@ -15,20 +15,5 @@ services:
       timeout: 5s
       retries: 5
 
-  app:
-      build: 
-        context: .
-        dockerfile: job_tracker/Dockerfile
-      ports: 
-        - "8000:8000"
-      depends_on:
-        db:
-          condition: service_healthy
-      env_file:
-        - .env
-      volumes:
-        - ./job_tracker:/app
-      command: ["python", "main.py"]
-
 volumes:
   db_data:
