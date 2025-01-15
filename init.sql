@@ -1,5 +1,5 @@
 CREATE TABLE jobs (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    id SERIAL PRIMARY KEY, 
     company_name TEXT NOT NULL,
     position_title TEXT NOT NULL,
     application_date DATE,
