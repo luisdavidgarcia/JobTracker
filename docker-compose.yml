@@ -1,0 +1,34 @@
+services:
+  db:
+    image: postgres:15
+    restart: always
+    env_file:
+      - .env
+    ports:
+      - "5432:5432"
+    volumes:
+      - db_data:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  app:
+      build: 
+        context: .
+        dockerfile: job_tracker/Dockerfile
+      ports: 
+        - "8000:8000"
+      depends_on:
+        db:
+          condition: service_healthy
+      env_file:
+        - .env
+      volumes:
+        - ./job_tracker:/app
+      command: ["python", "main.py"]
+
+volumes:
+  db_data:
