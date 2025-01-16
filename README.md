@@ -49,6 +49,17 @@ Lol, lol, lol I finally got some sucess like I found out the best version of
 pyscopg to use to interface with Postgres is just `psycopg` instead of 
 `psycopg2` because the first is the modern version.
 
+I finally got a working version of Job Tracker. It strikes me as a janky, but 
+hey its working pretty well. I will need to add some examples. Also I sorta
+prefer working with OpenAi model or something else too. We will see. 
 
+I need to add the ability to read the user's resume and store that context so 
+that the LLM can then compare the user's skills and experiecne to the requested.
+There are a few applications with this mainly the one being that of modifying
+the user's resume for the job.
+
+Also decided to exclude the job description "required experience" since it 
+is often the case many apps ask way more than necessary in most cases. So to
+not deter applicants let's just ignore it for now. 
 
 </details>
