@@ -53,6 +53,7 @@ venv.bak/
 *.log
 logs/
 log/
+dev_notes.md
 
 # Coverage & Testing
 .coverage
@@ -68,3 +69,4 @@ Thumbs.db
 
 # SQL
 *.session.sql
+

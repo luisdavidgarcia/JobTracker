@@ -1,65 +1,76 @@
-# JobTracker
-Tired of logging your jobs into a spreadsheet. Why not a database? Overkill? Yes, but it's fun :)
+# JobTracker 💼🦙
 
-## Notes
+![JobTracker Logo](logo.jpeg)
 
-<details>
-<summary>1/15/2025 - Docker & Poetry Lessons Learned</summary>
+Streamline your job search and application process with **JobTracker**, a command-line tool that helps you organize and manage your job applications using a local database. Tired of messy spreadsheets? **JobTracker** provides a structured and efficient way to track your job search progress.
 
-Wow it was freaking dumb of me to thinking of putting poetry in a docker 
-container, when a docker container is virtually meant for isolation.
+## Key Features
 
-Okay so after 3 hours then of perfecting my dockerfile I decied to do:
+*   **Effortless Job Logging:** Quickly add job postings to your local database directly from your clipboard.
+*   **Intelligent Parsing (Powered by LLMs):** JobTracker uses large language models (LLMs) to automatically extract key information from job descriptions, saving you time and effort.
+*   **Structured Data Storage:** Store essential job details, including company name, position title, application date, job link, application status, and more, in a well-organized database.
+*   **CLI Interface:** Simple and intuitive command-line interface for easy interaction.
+*   **Project Alignment and Skill Gap Analysis:** (Future Feature) Plan to add functionality to compare your skills and experience with job requirements.
 
-```sh
-poetry export --without-hashes --format=requirements.txt > requirements.txt
-```
+## Getting Started
 
-So much simpler now I can just pip install the requirements.txt, but what no one tells you is that export must be installed. Poetry has plugins! To install just do:
+### Prerequisites
 
-```sh
-poetry self add poetry-plugin-export
-```
+*   Python 3.11+
+*   Poetry (recommended package manager)
+*   PostgreSQL (local or remote database)
+*   Ollama (for LLM functionality)
 
-Overall if you ever think of adding a venv, poetry, or some other virtual enviroment in your docker container just don't it is pointless in most cases.
+### Installation
 
----
+1.  Clone the repository:
 
-Wow sometimes I just like complexity too much I am running this on a M series mac,
-so only need Docker for my Database. Otherwise I can't use my local instance
-of Ollama running and utilize the GPU. Gosh lol sometimes I make my life so hard.
+    ```bash
+    git clone [https://github.com/](https://github.com/)[your_username]/JobTracker.git
+    cd JobTracker
+    ```
 
-I will say if you did this in Windows or Linux then life would be simple, but
-this is more powerful than my Linux desktop, so :(.
+2.  Install dependencies using [Poetry](https://python-poetry.org/docs/#installation):
 
-Rant over, so basically yeah just use poetry and run.
+    ```bash
+    poetry install
+    ```
 
-```sh
-poetry run python job_tracker/main.py
-```
+3.  Set up your PostgreSQL database and create a `.env` file in the project root with the following variables:
 
-Also my ooga booga brain just learned about SQL tools. Very nice SQL extension
-in VSCode, just need to install the Postgres drivers to get started, but 
-overall very solid for interacting with databases.
-</details>
+    ```
+    POSTGRES_USER=your_username
+    POSTGRES_PASSWORD=your_password
+    POSTGRES_DB=your_database_name
+    DB_HOST=localhost
+    DB_PORT=5432
+    DATABASE_URL="postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@${DB_HOST}:${DB_PORT}/${POSTGRES_DB}"
+    ```
 
-<details>
-<summary>1/16/2025 - Progres, Poetry, and Docker Resolve Continued</summary>
-Lol, lol, lol I finally got some sucess like I found out the best version of
-pyscopg to use to interface with Postgres is just `psycopg` instead of 
-`psycopg2` because the first is the modern version.
+4. Ensure Ollama is running and accessible.
 
-I finally got a working version of Job Tracker. It strikes me as a janky, but 
-hey its working pretty well. I will need to add some examples. Also I sorta
-prefer working with OpenAi model or something else too. We will see. 
+### Usage
 
-I need to add the ability to read the user's resume and store that context so 
-that the LLM can then compare the user's skills and experiecne to the requested.
-There are a few applications with this mainly the one being that of modifying
-the user's resume for the job.
+To add a new job entry:
 
-Also decided to exclude the job description "required experience" since it 
-is often the case many apps ask way more than necessary in most cases. So to
-not deter applicants let's just ignore it for now. 
+1.  Copy the job description to your clipboard.
+2.  Run the JobTracker script:
 
-</details>
+    ```bash
+    poetry run python job_tracker/main.py --schema init.sql
+    ```
+    or if you installed `poetry shell` you can use it to run as: 
+    ```bash
+    python job_tracker/main.py --schema init.sql
+    ```
+
+3.  Follow the interactive prompts to confirm the extracted information and add the job to your database.
+
+## Database Schema
+
+You can incoprate your own schemas, but you will need to edit the `template` for the langchain, so that it can properly create the desired json output you want.
+
+
+## License
+
+This project is licensed under the terms of the [MIT License](LICENSE).
