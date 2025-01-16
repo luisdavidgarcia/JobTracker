@@ -37,7 +37,7 @@ def analyze_job_description(description, schema):
     template = """
     You are a helpful assistant designed to parse job descriptions 
     and extract relevant information for a job application tracker. Your output 
-    MUST be a valid JSON object conforming to the provided schema. If a field 
+    MUST be a valid JSON object CONFIRMING to the PROVIDED schema. If a field 
     cannot be extracted, its value in the JSON MUST be null. Do not include any 
     explanation or commentary outside the JSON object.
 
@@ -87,8 +87,10 @@ def analyze_job_description(description, schema):
     to this role. These are often related to business goals or product improvements.
     *   **Value Proposition (What they want YOU to bring):** Summarize the 
     primary value the company expects from the candidate in this role.
+    *   **ONLY WORK WITH THE SCHEMA PROVIDED:** Do not add or remove fields from
+    the schema. If a field cannot be extracted, set its value to null.
 
-    Output:
+    Output (DON'T MAKE KEYS OUTSIDE OF THE SCHEMA):
     ```json
     """
 
