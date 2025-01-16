@@ -1,6 +1,6 @@
-# JobTracker 💼🦙
-
 ![JobTracker Logo](logo.jpeg)
+
+# JobTracker 💼🦙
 
 Streamline your job search and application process with **JobTracker**, a command-line tool that helps you organize and manage your job applications using a local database. Tired of messy spreadsheets? **JobTracker** provides a structured and efficient way to track your job search progress.
 
