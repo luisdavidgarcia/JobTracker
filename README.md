@@ -38,6 +38,17 @@ Rant over, so basically yeah just use poetry and run.
 poetry run python job_tracker/main.py
 ```
 
-
+Also my ooga booga brain just learned about SQL tools. Very nice SQL extension
+in VSCode, just need to install the Postgres drivers to get started, but 
+overall very solid for interacting with databases.
 </details>
 
+<details>
+<summary>1/16/2025 - Progres, Poetry, and Docker Resolve Continued</summary>
+Lol, lol, lol I finally got some sucess like I found out the best version of
+pyscopg to use to interface with Postgres is just `psycopg` instead of 
+`psycopg2` because the first is the modern version.
+
+
+
+</details>
