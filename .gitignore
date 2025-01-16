@@ -65,3 +65,6 @@ htmlcov/
 # OS specific
 .DS_Store
 Thumbs.db
+
+# SQL
+*.session.sql
