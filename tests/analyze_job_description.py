@@ -84,7 +84,7 @@ def analyze_job_description(description, schema):
     return response
 
 def main():
-    schema = read_schema_from_file("/Users/lucky/GitHub/JobTracker/init.sql")
+    schema = read_schema_from_file("../init.sql")
     job_description_from_clipboard = pyperclip.paste()
     job_query = analyze_job_description(job_description_from_clipboard, schema)
     print(job_query)
