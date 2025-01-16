@@ -1,11 +1,14 @@
+"""Module to test the database connection."""
+
 import os
+
 import psycopg
 
 DATABASE_URL = os.environ.get("DATABASE_URL")
 
 try:
     conn = psycopg.connect(DATABASE_URL)
-    with conn.cursor() as cur: # Using a context manager is recommended
+    with conn.cursor() as cur:  # Using a context manager is recommended
         cur.execute("SELECT * FROM jobs;")
         result = cur.fetchone()
         print(f"Database connection successful: {result}")
