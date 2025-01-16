@@ -1,3 +1,5 @@
+"""Module to test the LangChain example."""
+
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_ollama.llms import OllamaLLM
 
