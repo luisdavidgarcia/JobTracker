@@ -23,4 +23,40 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^8.3.4"
+ruff = "^0.9.1"
+flake8-blind-except = "^0.2.1"
+pre-commit = "^4.0.1"
 
+[tool.ruff]
+line-length = 120 # Set your preferred line length
+lint.select = [
+    "E",    # pycodestyle errors
+    "W",    # pycodestyle warnings
+    "F",    # pyflakes
+    "I",    # isort
+    "N",    # pep8-naming
+    "D",    # pydocstyle
+    "UP",    # pyupgrade
+    "YTT",  # flake8-2020
+    "ANN", # flake8-annotations
+    "S", # flake8-bandit
+    "B904", # Blind excepts (flake8-blind-except equivalent)
+    "A", # flake8-builtins
+    "COM", # flake8-commas
+    "C4", # flake8-comprehensions
+    "TCH", # flake8-type-checking
+]
+lint.ignore = []
+target-version = "py311" # Set your target Python version
+src = ["."] # Where your source code is
+exclude = [".venv"] # exclude virtual environments
+fix = true # Automatically fix simple errors
+
+[tool.ruff.lint.per-file-ignores]
+"__init__.py" = ["F401"] # Ignore unused imports in __init__.py files
+
+[tool.ruff.lint.isort]
+known-first-party = ["job_tracker"]
+
+[tool.ruff.lint.pydocstyle]
+convention = "google" # Use Google docstring style
