@@ -20,6 +20,7 @@ Streamline your job search and application process with **JobTracker**, a comman
 *   Poetry (recommended package manager)
 *   PostgreSQL (local or remote database)
 *   Ollama (for LLM functionality)
+*   Docker (for hosting your own database)
 
 ### Installation
 
@@ -49,12 +50,19 @@ Streamline your job search and application process with **JobTracker**, a comman
 
 4. Ensure Ollama is running and accessible.
 
+5. Ensure you have Docker installed and running.
+
 ### Usage
 
 To add a new job entry:
 
-1.  Copy the job description to your clipboard.
-2.  Run the JobTracker script:
+1.  Turn on your database with Docker Compose:
+    ```bash
+    docker compose up -d --build
+    ```
+    This command will build and start the database container in detached mode.
+2.  Copy the job description to your clipboard.
+3.  Run the JobTracker script:
 
     ```bash
     poetry run python job_tracker/main.py --schema init.sql
@@ -64,7 +72,7 @@ To add a new job entry:
     python job_tracker/main.py --schema init.sql
     ```
 
-3.  Follow the interactive prompts to confirm the extracted information and add the job to your database.
+4.  Follow the interactive prompts to confirm the extracted information and add the job to your database.
 
 ## Database Schema
 
