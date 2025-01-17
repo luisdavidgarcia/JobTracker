@@ -54,6 +54,7 @@ venv.bak/
 logs/
 log/
 dev_notes.md
+.ruff_cache/
 
 # Coverage & Testing
 .coverage

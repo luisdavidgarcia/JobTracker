@@ -61,7 +61,9 @@ To add a new job entry:
     docker compose up -d --build
     ```
     This command will build and start the database container in detached mode.
+
 2.  Copy the job description to your clipboard.
+
 3.  Run the JobTracker script:
 
     ```bash
@@ -78,7 +80,8 @@ To add a new job entry:
 
 You can incoprate your own schemas, but you will need to edit the `template` for the langchain, so that it can properly create the desired json output you want.
 
-
 ## License
 
 This project is licensed under the terms of the [MIT License](LICENSE).
+
+## Example
