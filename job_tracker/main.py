@@ -7,6 +7,7 @@ import re
 
 import psycopg
 import pyperclip
+from dotenv import load_dotenv
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_ollama.llms import OllamaLLM
 
@@ -58,6 +59,7 @@ def _analyze_job_description(description: str, schema: str) -> str:
     position title, application date, application status, job link, application
     method, salary range, contact info) directly from the job description. If a
     piece of information is explicitly provided, use *that exact wording* if possible.
+    Otherwise leave as null.
 
     2.  **Required Skills:** Extract information related to *required* and
     *preferred/desired* skills from sections typically labeled as:
@@ -96,7 +98,7 @@ def _analyze_job_description(description: str, schema: str) -> str:
     """
 
     prompt = ChatPromptTemplate.from_template(template)
-    model = OllamaLLM(model="llama3.2", num_ctx=8192)
+    model = OllamaLLM(model="llama3.2", num_ctx=14000)
     chain = prompt | model
     response = chain.invoke({"description": description, "schema": schema})
 
@@ -139,6 +141,11 @@ def _add_to_database(sql_data: tuple[str, list]) -> None:
         sql_data: Tuple of (query string, parameters list)
     """
     if not sql_data:
+        print("Improper SQL Data Syntax")
+        return
+
+    if not load_dotenv():
+        print("Was not able to load .env file")
         return
 
     query, params = sql_data

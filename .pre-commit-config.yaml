@@ -3,5 +3,5 @@ repos:
     rev: v0.9.1 # Use the latest version or a specific one
     hooks:
     -   id: ruff
-        args: [--fix] # Automatically fix fixable issues
+        args: [--unsafe-fixes] # Automatically fix fixable issues
     -   id: ruff-format # Run the formatter
