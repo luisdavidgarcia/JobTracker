@@ -85,3 +85,12 @@ You can incoprate your own schemas, but you will need to edit the `template` for
 This project is licensed under the terms of the [MIT License](LICENSE).
 
 ## Example
+
+To get started, navigate to the job posting on the website and copy the application details. 
+Once you run the script, it will automatically generate this information as a new entry. 
+You can then review and verify the details before adding them to the database.
+
+https://github.com/user-attachments/assets/9fc67fd6-3a01-4f42-b34d-70df5c00649f
+
+
+
