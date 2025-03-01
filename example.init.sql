@@ -13,7 +13,4 @@ CREATE TABLE jobs (
     value_proposition TEXT,
     company_priorities TEXT,
     required_skills TEXT
-    -- Self-assessment (TODO)
-    -- project_alignment TEXT,
-    -- skill_gap_action_plan TEXT
 );
