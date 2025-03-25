@@ -3,6 +3,8 @@
 import json
 import os
 import re
+import sys
+from datetime import datetime
 
 import psycopg
 import pyperclip
@@ -26,22 +28,38 @@ def _read_schema_from_file(filepath: str) -> str:
 
 def _save_job_description(schema: str) -> None:
     """Save job description from clipboard."""
+    print("Saving job description from clipboard...", flush=True)
+
     job_description_from_clipboard = pyperclip.paste()
+
+    # Force a clipboard refresh - this tricks the system into thinking something changed
+    # Store current clipboard content temporarily
+    temp_content = job_description_from_clipboard
+    pyperclip.copy("")  # Copy empty string
+    pyperclip.copy(temp_content)  # Copy original content back
+
     job_query = _analyze_job_description(job_description_from_clipboard, schema)
     sql_data = _generate_sql(job_query)
     if sql_data:
         _add_to_database(sql_data)
     else:
-        print("Job not added to database. Try again.")
+        print("\nJob not added to database. Try again...\n")
+        print("Listening for hotkeys...\n")
 
 
 def _quit_program() -> bool:
     """Quit the program."""
-    print("Great work today! Quitting program now...")
+    print("\nGreat work today! Quitting program now...")
+    sys.exit(0)
     return False
 
 
-def _analyze_job_description(description: str, schema: str) -> str:
+def _analyze_job_description(
+    description: str,
+    schema: str,
+    model: str = "llama3.2",
+    num_ctx: int = 4096,
+) -> dict:
     template = """
     You are a helpful assistant designed to parse job descriptions
     and extract relevant information for a job application tracker. Your output
@@ -61,86 +79,59 @@ def _analyze_job_description(description: str, schema: str) -> str:
 
     Instructions:
 
-    1.  **Direct Extraction:** Extract explicit information (e.g., company name,
-    position title, application date, application status, job link, application
-    method, salary range, contact info) directly from the job description. If a
+    1.  **Direct Extraction:** Extract the company name and position title
+    directly from the job description. If a
     piece of information is explicitly provided, use *that exact wording* if possible.
     Otherwise leave as null.
-
-    2.  **Required Skills:** Extract information related to *required* and
-    *preferred/desired* skills from sections typically labeled as:
-        *   Required Skills
-        *   Required Qualifications
-        *   Minimum Qualifications
-        *   Basic Qualifications
-        *   Essential Skills
-        *   Must Have
-        *   Requirements
-        *   Preferred Qualifications
-        *   Desired Skills
-        *   Bonus Points For
-        *   Nice to Have
-        List all of these skills as a comma-separated string in the
-        "required_skills" field.
-
-    3.  **Inference (Use with Caution):** Infer implicit information (e.g.,
-    company problem, company priorities, value proposition) *only when strongly
-    implied* by the job description. If there's ambiguity or no clear implication,
-    set the corresponding JSON value to null.
-
-    Guidelines for Inference:
-
-    *   **Company Problem:** Identify the core problem the company aims to solve
-    with this role. Focus on the pain points or challenges the company faces.
-    *   **Company Priorities:** Determine the company's key objectives related
-    to this role. These are often related to business goals or product improvements.
-    *   **Value Proposition (What they want YOU to bring):** Summarize the
-    primary value the company expects from the candidate in this role.
-    *   **ONLY WORK WITH THE SCHEMA PROVIDED:** Do not add or remove fields from
-    the schema. If a field cannot be extracted, set its value to null.
 
     Output (DON'T MAKE KEYS OUTSIDE OF THE SCHEMA):
     ```json
     """
 
     prompt = ChatPromptTemplate.from_template(template)
-    model = OllamaLLM(model="llama3.2", num_ctx=14000)
+    model = OllamaLLM(model=model, num_ctx=num_ctx)
     chain = prompt | model
-    response = chain.invoke({"description": description, "schema": schema})
 
-    return response
-
-
-def _generate_sql(json_data: str) -> tuple[str, list]:
-    """Generate a parameterized SQL query from JSON data.
-
-    Return:
-        a tuple of (query string, parameters list).
-    """
     try:
-        data = json.loads(json_data)
+        response = chain.invoke({"description": description, "schema": schema})
+        json_response = json.loads(response)
+        json_response["original_description"] = description
+        json_response["created_at"] = datetime.now().isoformat()
+        return json_response
     except json.JSONDecodeError as e:
-        print(f"Invalid JSON received: {e}")
+        print(f"Error decoding JSON: {e}")
+        print(f"Raw response: {response}")
+        return {}
+    except Exception as e:
+        print(f"An unexpected error occurred: {e}")
+        return {}
+
+
+def _generate_sql(job_data: dict) -> tuple[str, list] | None:
+    """Generate a parameterized SQL query from job data (dictionary)."""
+    try:
+        columns = list(job_data.keys())
+        values = list(job_data.values())
+
+        # Create the parameterized query
+        placeholders = ["%s" for _ in values]
+        query = f"INSERT INTO jobs ({', '.join(columns)}) VALUES ({', '.join(placeholders)});"  # noqa: S608
+
+        print("Generated SQL:\n", query, flush=True)
+        print("With values:\n", values, flush=True)
+
+        confirmation = input("Confirm adding this entry? (y/n): ")
+        if confirmation == "y":
+            return query, values
+
         return None
 
-    columns = list(data.keys())
-    values = list(data.values())
-
-    # Create the parameterized query
-    placeholders = ["%s" for _ in values]
-    query = f"INSERT INTO jobs ({', '.join(columns)}) VALUES ({', '.join(placeholders)});"  # noqa: S608
-
-    print("Generated SQL:\n", query)
-    print("With values:", values)
-
-    confirmation = input("Confirm adding this entry? (y/n): ")
-    if confirmation.lower() != "y":
+    except Exception as e:
+        print(f"Error generating SQL: {e}")
         return None
 
-    return query, values
 
-
-def _add_to_database(sql_data: tuple[str, list]) -> None:
+def _add_to_database(sql_data: tuple[str, list] | None) -> None:
     """Add a job to the database using a parameterized query.
 
     Args:
@@ -162,7 +153,8 @@ def _add_to_database(sql_data: tuple[str, list]) -> None:
         with conn.cursor() as cur:
             cur.execute(query, params)
             conn.commit()
-        print("Job added to database successfully!")
+        print("\nJob added to database successfully!")
+        print("Listening for hotkeys...\n")
     except psycopg.Error as e:
         print(f"Error adding to database: {e}")
     finally:
