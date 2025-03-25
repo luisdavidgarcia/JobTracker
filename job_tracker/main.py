@@ -18,7 +18,7 @@ def main() -> None:
         "--schema",
         type=str,
         help="Path to the database schema file",
-        default="example.init.sql",
+        default="init.sql",
     )
     args = parser.parse_args()
 
@@ -30,6 +30,7 @@ def main() -> None:
             QUIT_HOTKEY: _quit_program,
         },
     ) as listener:
+        print("Listening for hotkeys...\n")
         listener.join()
 
 
