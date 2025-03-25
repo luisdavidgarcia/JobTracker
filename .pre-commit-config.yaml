@@ -1,7 +1,7 @@
 repos:
--   repo: https://github.com/charliermarsh/ruff-pre-commit
-    rev: v0.9.1 # Use the latest version or a specific one
+-   repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.1.9  # Use a more recent, stable version
     hooks:
     -   id: ruff
-        args: [--unsafe-fixes] # Automatically fix fixable issues
-    -   id: ruff-format # Run the formatter
+        args: [--fix, --unsafe-fixes]  # Automatically fix fixable issues
+    -   id: ruff-format  # Run the formatterstat
