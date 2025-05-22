@@ -93,4 +93,7 @@ You can then review and verify the details before adding them to the database.
 https://github.com/user-attachments/assets/9fc67fd6-3a01-4f42-b34d-70df5c00649f
 
 
+## System Architecture 
+
+![image](https://github.com/user-attachments/assets/348c2ad3-4be2-4822-834b-6f55b531bd5a)
 
