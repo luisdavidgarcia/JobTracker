@@ -26,7 +26,7 @@ def _read_schema_from_file(filepath: str) -> str:
         return schema
 
 
-def _save_job_description(schema: str) -> None:
+def _save_job_description(schema: str, model: str) -> None:
     """Save job description from clipboard."""
     print("Saving job description from clipboard...", flush=True)
 
@@ -38,7 +38,7 @@ def _save_job_description(schema: str) -> None:
     pyperclip.copy("")  # Copy empty string
     pyperclip.copy(temp_content)  # Copy original content back
 
-    job_query = _analyze_job_description(job_description_from_clipboard, schema)
+    job_query = _analyze_job_description(job_description_from_clipboard, schema, model)
     sql_data = _generate_sql(job_query)
     if sql_data:
         _add_to_database(sql_data)

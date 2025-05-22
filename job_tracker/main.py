@@ -20,6 +20,12 @@ def main() -> None:
         help="Path to the database schema file",
         default="init.sql",
     )
+    parser.add_argument(
+        "--model",
+        type=str,
+        help="Model to use for parsing",
+        default="llama3.2",
+    )
     args = parser.parse_args()
 
     schema = _read_schema_from_file(args.schema)
