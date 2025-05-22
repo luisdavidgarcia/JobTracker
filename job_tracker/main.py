@@ -32,7 +32,7 @@ def main() -> None:
 
     with keyboard.GlobalHotKeys(
         {
-            SAVE_JOB_DESCRIPTION_HOTKEY: lambda: _save_job_description(schema),
+            SAVE_JOB_DESCRIPTION_HOTKEY: lambda: _save_job_description(schema, args.model),
             QUIT_HOTKEY: _quit_program,
         },
     ) as listener:
