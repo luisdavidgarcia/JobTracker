@@ -1,0 +1,66 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36" version="27.0.8">
+  <diagram name="Page-1" id="7VVW7RhKtOdaTwRKrOq3">
+    <mxGraphModel dx="2536" dy="1611" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <UserObject label="" id="mW64vi7ED2LSjnERxqB2-2">
+          <mxCell style="rounded=0;whiteSpace=wrap;html=1;dashed=1;dashPattern=12 12;" vertex="1" parent="1">
+            <mxGeometry x="-147" y="68" width="1791" height="916" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <mxCell id="mW64vi7ED2LSjnERxqB2-3" value="&lt;h1 style=&quot;box-sizing: border-box; margin: 24px 0px 16px; line-height: 1.25; padding-bottom: 0.3em; border-bottom: 1px solid rgba(209, 217, 224, 0.7); color: rgb(31, 35, 40); font-family: -apple-system, &amp;quot;system-ui&amp;quot;, &amp;quot;Segoe UI&amp;quot;, &amp;quot;Noto Sans&amp;quot;, Helvetica, Arial, sans-serif, &amp;quot;Apple Color Emoji&amp;quot;, &amp;quot;Segoe UI Emoji&amp;quot;; text-align: start; background-color: rgb(255, 255, 255);&quot; dir=&quot;auto&quot; class=&quot;heading-element&quot; tabindex=&quot;-1&quot;&gt;&lt;font style=&quot;font-size: 60px;&quot;&gt;JobTracker 💼🦙&lt;/font&gt;&lt;/h1&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="-146" y="65" width="488" height="86" as="geometry" />
+        </mxCell>
+        <mxCell id="mW64vi7ED2LSjnERxqB2-5" value="&lt;span style=&quot;font-size: 40px;&quot;&gt;&lt;b&gt;PostgreSQL -&lt;/b&gt;&lt;/span&gt;&lt;div&gt;&lt;span style=&quot;font-size: 40px;&quot;&gt;&lt;b&gt;Contains Applied Job Applications&lt;/b&gt;&lt;/span&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="1160.16" y="411.5" width="473" height="239" as="geometry" />
+        </mxCell>
+        <mxCell id="mW64vi7ED2LSjnERxqB2-4" value="" style="image;sketch=0;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/mscae/Docker.svg;" vertex="1" parent="1">
+          <mxGeometry x="1293" y="652" width="207.32" height="170" as="geometry" />
+        </mxCell>
+        <mxCell id="mW64vi7ED2LSjnERxqB2-7" value="" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=default;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://ih1.redbubble.net/image.5611428487.0532/st,small,507x507-pad,600x600,f8f8f8.jpg;clipPath=inset(17.67% 22.67% 17.67% 23.67% round 1%);" vertex="1" parent="1">
+          <mxGeometry x="688" y="641" width="162.66" height="196" as="geometry" />
+        </mxCell>
+        <mxCell id="mW64vi7ED2LSjnERxqB2-9" value="" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=default;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://cdn-icons-png.flaticon.com/512/13441/13441753.png;" vertex="1" parent="1">
+          <mxGeometry x="-49" y="259" width="197" height="197" as="geometry" />
+        </mxCell>
+        <mxCell id="mW64vi7ED2LSjnERxqB2-10" value="" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=default;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://kajabi-storefronts-production.kajabi-cdn.com/kajabi-storefronts-production/file-uploads/blogs/22606/images/b481620-88b6-27ee-4ecf-af140aa0_0_BKOvjpzn6SPKs81L.png;clipPath=inset(35.21% 10% 32.25% 9.67%);" vertex="1" parent="1">
+          <mxGeometry x="508.63" y="401" width="521.41" height="119" as="geometry" />
+        </mxCell>
+        <mxCell id="mW64vi7ED2LSjnERxqB2-14" value="" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=default;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://images.vexels.com/media/users/3/205965/isolated/preview/746864a197dde979ee1a73548317f1f0-clipboard-paper-stroke-icon.png;" vertex="1" parent="1">
+          <mxGeometry x="-57.5" y="634" width="214" height="214" as="geometry" />
+        </mxCell>
+        <mxCell id="mW64vi7ED2LSjnERxqB2-15" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;strokeWidth=6;" edge="1" parent="1" source="mW64vi7ED2LSjnERxqB2-9" target="mW64vi7ED2LSjnERxqB2-14">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="699" y="730" as="sourcePoint" />
+            <mxPoint x="749" y="680" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="mW64vi7ED2LSjnERxqB2-16" value="&lt;font style=&quot;font-size: 30px;&quot;&gt;Copy Job Application to Clipboard&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="74" y="490.5" width="284" height="81" as="geometry" />
+        </mxCell>
+        <mxCell id="mW64vi7ED2LSjnERxqB2-17" value="&lt;font style=&quot;font-size: 40px;&quot;&gt;&lt;b style=&quot;&quot;&gt;LLM Backend and SQL Query Generator&lt;/b&gt;&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="549.33" y="539" width="440" height="83" as="geometry" />
+        </mxCell>
+        <mxCell id="mW64vi7ED2LSjnERxqB2-18" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=6;" edge="1" parent="1" source="mW64vi7ED2LSjnERxqB2-14" target="mW64vi7ED2LSjnERxqB2-7">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="699" y="585" as="sourcePoint" />
+            <mxPoint x="749" y="535" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="mW64vi7ED2LSjnERxqB2-19" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;strokeWidth=6;" edge="1" parent="1" source="mW64vi7ED2LSjnERxqB2-7" target="mW64vi7ED2LSjnERxqB2-4">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="447" y="840" as="sourcePoint" />
+            <mxPoint x="979" y="838" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="mW64vi7ED2LSjnERxqB2-20" value="&lt;font style=&quot;font-size: 30px;&quot;&gt;Feed Job Application to LLM via LangChain&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="199" y="760" width="367" height="54" as="geometry" />
+        </mxCell>
+        <mxCell id="mW64vi7ED2LSjnERxqB2-21" value="&lt;font style=&quot;font-size: 30px;&quot;&gt;LLM generates and submits new entry for database&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="855" y="740" width="411" height="132" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
