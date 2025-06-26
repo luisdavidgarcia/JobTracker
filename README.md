@@ -1,8 +1,18 @@
-![JobTracker Logo](logo.jpeg)
+<img alt="JobTracker Logo" src="logo.jpeg" height=500px>
 
 # JobTracker 💼🦙
 
-Streamline your job search and application process with **JobTracker**, a command-line tool that helps you organize and manage your job applications using a local database. Tired of messy spreadsheets? **JobTracker** provides a structured and efficient way to track your job search progress.
+Streamline your job search and application process with **JobTracker**, a command-line tool that helps 
+you organize and manage your job applications using a local database. Tired of messy spreadsheets? 
+**JobTracker** provides a structured and efficient way to track your job search progress.
+
+## Demo
+
+To get started, navigate to the job posting on the website and copy the application details. 
+Once you run the script, it will automatically generate this information as a new entry. 
+You can then review and verify the details before adding them to the database.
+
+https://github.com/user-attachments/assets/9fc67fd6-3a01-4f42-b34d-70df5c00649f
 
 ## Key Features
 
@@ -65,7 +75,6 @@ To add a new job entry:
 2.  Copy the job description to your clipboard.
 
 3.  Run the JobTracker script:
-
     ```bash
     poetry run python job_tracker/main.py --schema init.sql
     ```
@@ -80,20 +89,10 @@ To add a new job entry:
 
 You can incoprate your own schemas, but you will need to edit the `template` for the langchain, so that it can properly create the desired json output you want.
 
-## License
-
-This project is licensed under the terms of the [MIT License](LICENSE).
-
-## Example
-
-To get started, navigate to the job posting on the website and copy the application details. 
-Once you run the script, it will automatically generate this information as a new entry. 
-You can then review and verify the details before adding them to the database.
-
-https://github.com/user-attachments/assets/9fc67fd6-3a01-4f42-b34d-70df5c00649f
-
-
 ## System Architecture 
 
 ![image](https://github.com/user-attachments/assets/348c2ad3-4be2-4822-834b-6f55b531bd5a)
 
+## License
+
+This project is licensed under the terms of the [MIT License](LICENSE).
